@@ -1,5 +1,6 @@
 package com.ATMmachine;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ATMmachine {
@@ -23,35 +24,56 @@ public class ATMmachine {
             }else{
                 System.out.println("Welcome and make a selection \n 1. check balance \n 2. deposit money \n 3. withdraw money \n 4. exit");
                 System.out.println("make a selection");
-                int choice =  sc.nextInt();
-                switch (choice){
-                    case 1:
-                        System.out.println("your balance is " + balance);
-                        System.out.println("Welcome and make a selection \n 1 check balance \n 2 deposit money \n 3 withdraw money \n 4 exit");
-                        break;
-                    case 2:
-                        System.out.println("enter amount to be deposited");
-                        double newBalance = sc.nextDouble() + balance;
-                        System.out.println("money deposited successfully and balance is now " + newBalance);
-                        System.out.println("Welcome and make a selection \n 1 check balance \n 2 deposit money \n 3 withdraw money \n 4 exit");
-                        break;
-                    case 3:
-                        System.out.println("enter amount to  withdraw");
-                        newBalance =  balance - sc.nextDouble() ;
-                        System.out.println(sc.nextDouble() + " withdrewed and balance is now " + newBalance);
-                        System.out.println("Welcome and make a selection \n 1 check balance \n 2 deposit money \n 3 withdraw money \n 4 exit");
-                        break;
-                    case 4:
-                        System.exit(0);
-                    default:
-                        System.out.println("Wrong choice");
-                        System.out.println("Welcome and make a selection \n 1 check balance \n 2 deposit money \n 3 withdraw money \n 4 exit");
+                    int choice = 0;
+                    Boolean flag = false;
+
+                    while (flag == false){
+                        try {
+                            choice =  sc.nextInt();
+                        }
+                        catch (InputMismatchException e){
+                            flag = true;
+                            System.out.println(e.getMessage() + ": Invalid choice");
+                        }
+                        if(flag){
+                            System.out.println(flag);
+                            System.out.println("Welcome and make a selection \n 1 check balance \n 2 deposit money \n 3 withdraw money \n 4 exit");
+                            sc.nextInt();
+
+                        }
+
+                        switch (choice){
+                        case 1:
+                            System.out.println("your balance is " + balance);
+                            System.out.println("Welcome and make a selection \n 1 check balance \n 2 deposit money \n 3 withdraw money \n 4 exit");
+                            break;
+                        case 2:
+                            System.out.println("enter amount to be deposited");
+                            double newBalance = sc.nextDouble() + balance;
+                            System.out.println("money deposited successfully and balance is now " + newBalance);
+                            System.out.println("Welcome and make a selection \n 1 check balance \n 2 deposit money \n 3 withdraw money \n 4 exit");
+                            break;
+                        case 3:
+                            System.out.println("enter amount to  withdraw");
+                            newBalance =  balance - sc.nextDouble() ;
+                            System.out.println(sc.nextDouble() + " withdrewed and balance is now " + newBalance);
+                            System.out.println("Welcome and make a selection \n 1 check balance \n 2 deposit money \n 3 withdraw money \n 4 exit");
+                            break;
+                        case 4:
+                            System.exit(0);
+
+                    }
+                        flag = false;
+                    sc.nextInt();
+                    }
+
+
                 }
-            }
+
         } else{
             System.out.println("Wrong account number");
         }
-        sc.nextLine();
+        sc.next();
     }
 }
 
