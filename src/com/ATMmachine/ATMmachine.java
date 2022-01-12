@@ -11,17 +11,17 @@ public class ATMmachine {
         accountPasswordPair.put(12345,"pass123");
         accountPasswordPair.put(6789,"pass567");
         Scanner sc = new Scanner(System.in);
-        System.out.println("Welcome to the ATM Machine\n Please enter your details");
-        System.out.println("Enter account Number");
+        System.out.println("Welcome to the ATM Machine\nPlease enter your details");
+        System.out.println("Enter account Number:");
         accountNum = sc.nextInt(); // error exceptions to be handled later
         String accValueInput =  accountPasswordPair.get(accountNum);
         if(accValueInput != null){
-            System.out.println("Enter your password");
+            System.out.println("Enter your password:");
             password = sc.next();
             if(!password.equals(accValueInput) ){
                 System.out.println("wrong password try again");
             }else{
-                System.out.println("Welcome and make a selection \n 1 check balance \n 2 deposit money \n 3 withdraw money \n 4 exit");
+                System.out.println("Welcome and make a selection \n 1. check balance \n 2. deposit money \n 3. withdraw money \n 4. exit");
                 System.out.println("make a selection");
                 int choice =  sc.nextInt();
                 switch (choice){
